@@ -1,6 +1,5 @@
 from sys import argv
 from args import args_query
-from pymongo import MongoClient
 from remotedb import RemoteDB
 
 remotedb = RemoteDB()

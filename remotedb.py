@@ -12,12 +12,19 @@ class RemoteDB(object):
         self.dbname = dbname
 
     def connect(self):
+        # Connect to remote mongodb and keep the tweets collection
         client = MongoClient(config.MONGO_ADDRESS, config.MONGO_PORT)
         self.db = client[self.dbname]
         self.db.authenticate(config.MONGO_USER, config.MONGO_PASSWD)
         self.tweets = self.db.tweets
 
     def createIndex(self, hours=1):
+        # Create three indices here:
+        #
+        # GEO2D for spatial query
+        # TEXT for full-text search
+        # expireAfterSeconds for the TTL, default parameter is 1 hour
+
         try:
             self.tweets.create_index([('coordinates.coordinates', GEO2D)])
             self.tweets.create_index([('text', TEXT)])
@@ -43,6 +50,7 @@ class RemoteDB(object):
     def findTweets(self, keyword, lon=None, lat=None, radius=10):
         self.timeit_start()
 
+        # Merge query parameters into the dict
         opt = {}
 
         if lon is not None and lat is not None:
@@ -56,8 +64,10 @@ class RemoteDB(object):
 
         sort = [('created_at', DESCENDING)]
 
+        # Fetch the most recent 100 tweets
         results = self.tweets.find(opt, sort=sort).limit(100)
 
+        # Pretty print
         inc = 1
         for doc in list(results):
             print(inc, '\t', doc['_id'], doc['created_at'], doc['coordinates'])
@@ -69,6 +79,7 @@ class RemoteDB(object):
         self.timeit_end()
 
     def deleteTweets(self):
+        # Delete everything in the tweets
         deleted_count = self.tweets.delete_many({}).deleted_count
         print('Delete', deleted_count, 'documents.')
 
@@ -77,6 +88,7 @@ if __name__ == '__main__':
     remotedb = RemoteDB()
     remotedb.connect()
 
+    # CLI for the database management
     if 'clear' in argv:
         remotedb.deleteTweets()
     elif 'index' in argv:

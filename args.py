@@ -4,15 +4,15 @@ from sys import argv
 def get_opts(argv):
     opts = {}
     while argv:
-        if argv[0][0] == '-':  # detect "-name value" pair.
-            if len(argv) > 1:
+        if argv[0][0] == '-':  # Detect "-name value" pair.
+            if len(argv) > 1:  # Skip if there is no value
                 opts[argv[0]] = argv[1]
         argv = argv[1:]  # Remove unnecessary parameter
     return opts
 
 
 #
-#  get command-line arguments for crawler.py
+# Get command-line arguments for crawler.py
 #
 def args_crawler(argv):
     opts = get_opts(argv)
@@ -32,7 +32,7 @@ def args_crawler(argv):
 
 
 #
-#  get command-line arguments for query.py
+# Get command-line arguments for query.py
 #
 def args_query(argv):
     opts = get_opts(argv)
