@@ -22,7 +22,7 @@ def args_crawler(argv):
             args['lon'] = float(opts['-lon'])
         if '-lat' in opts:
             args['lat'] = float(opts['-lat'])
-    except ValueError as (errno):
+    except ValueError as errno:
         print('Value error: {0}'.format(errno))
         print('Usage: python crawler.py -lon <longitude> -lat <latitude>')
     return args
@@ -43,7 +43,7 @@ def args_query(argv):
             args['radius'] = float(opts['-r'])
         if '-k' in opts:
             args['keyword'] = opts['-k']
-    except ValueError as (errno):
+    except ValueError as errno:
         print('Value error: {0}'.format(errno))
         print(
             'Usage: python query.py -k <keywords> -lon <longitude> -lat <latitude> -r <radius>'
