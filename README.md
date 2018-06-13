@@ -39,7 +39,7 @@ python query.py -k "NBA"
 python query.py -lon -122.75 -lat 36.8 -r 10
 python query.py -lon -122.75 -lat 36.8 -r 1
 ```
-The program returns two query results in this case. It also measures the time spent on the query and shows the operators used in the query.
+The program returns two query results in this case. It also measures the time spent on the query and shows the operators used this time.
 ![Query](reference/2.query.jpg "Query")
 
 
