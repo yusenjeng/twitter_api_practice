@@ -35,7 +35,9 @@ python query.py -k <keywords> -lon <longitude> -lat <latitude> -r <radius in mil
 
 Example:
 ```
-python query.py -k "#NBA Duncan" -lon -122.75 -lat 36.8 -r 50
+python query.py -k "NBA"
+python query.py -lon -122.75 -lat 36.8 -r 10
+python query.py -lon -122.75 -lat 36.8 -r 1
 ```
 
 
