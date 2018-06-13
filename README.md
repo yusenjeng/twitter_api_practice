@@ -3,6 +3,8 @@
 ## Installation
 From [PyPi](https://pypi.python.org/pypi/kubernetes/) directly:
 ```
+git clone git@github.com:yusenjeng/twitter_api_practice.git
+cd twitter_api_practice
 pip install -r requirements.txt
 ```
 
@@ -17,7 +19,11 @@ python crawler.py -lon <longitude> -lat <latitude>
 
 Example:
 ```
-python crawler.py -lon -105.301758 -lat 39.964069
+# Stream the data from the earth's surface
+python crawler.py
+
+# or from specific location
+python crawler.py -lon -122.75 -lat 36.8
 ```
 
 
@@ -28,7 +34,7 @@ python query.py -k <keywords> -lon <longitude> -lat <latitude> -r <radius in mil
 
 Example:
 ```
-python query.py -k "#NBA Duncan" -lon -105.301758 -lat 39.964069 -r 50
+python query.py -k "#NBA Duncan" -lon -122.75 -lat 36.8 -r 50
 ```
 
 

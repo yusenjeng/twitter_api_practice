@@ -16,7 +16,10 @@ def get_opts(argv):
 #
 def args_crawler(argv):
     opts = get_opts(argv)
-    args = {}
+    args = {
+        'lon': None,
+        'lat': None,
+    }
     try:
         if '-lon' in opts:
             args['lon'] = float(opts['-lon'])
@@ -33,7 +36,10 @@ def args_crawler(argv):
 #
 def args_query(argv):
     opts = get_opts(argv)
-    args = {}
+    args = {
+        'lon': None,
+        'lat': None,
+    }
     try:
         if '-lon' in opts:
             args['lon'] = float(opts['-lon'])
