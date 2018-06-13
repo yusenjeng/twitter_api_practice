@@ -2,7 +2,7 @@ import time
 import config
 
 from sys import argv
-from pymongo import MongoClient, DESCENDING, GEO2D, TEXT
+from pymongo import MongoClient, DESCENDING, GEOSPHERE, TEXT, GEO2D
 from pymongo.errors import OperationFailure
 
 
