@@ -1,20 +1,28 @@
 from sys import argv, exit
 from args import args_crawler
-from pymongo import MongoClient
+from pymongo.errors import WriteError
+from remotedb import RemoteDB
 
-import json
 import config
 import tweepy
 import datetime
+
+remotedb = RemoteDB()
+remotedb.connect()
 
 
 class CustomStreamListener(tweepy.StreamListener):
     def on_status(self, status):
         doc = status._json
-        # doc['created_at'] = datetime.datetime.strptime(doc['created_at'], '%a %b %d %H:%M:%S +0000 %Y')
-        print(doc)
-        print( type(doc))
-        exit()
+        doc['created_at'] = datetime.datetime.strptime(
+            doc['created_at'], '%a %b %d %H:%M:%S +0000 %Y')
+
+        try:
+            remotedb.insertTweet(doc)
+        except WriteError as err:
+            print('Write error: {0}'.format(err))
+            print('Stop program!')
+            exit()
 
     def on_error(self, status_code):
         print('Error with status code:', status_code)
@@ -38,7 +46,6 @@ class TwitterCrawler(object):
         self.__stream = tweepy.streaming.Stream(auth, CustomStreamListener())
 
     def pull(self, lon, lat):
-        # The equatorial circumference of Earth is about 24,900 miles.
         if lon is not None and lat is not None:
             self.__stream.filter(
                 locations=[lon - 1, lat - 1, lon + 1, lat + 1])
@@ -57,4 +64,3 @@ if __name__ == '__main__':
     twitter = TwitterCrawler()
     twitter.connect()
     twitter.pull(args['lon'], args['lat'])
-    print(args)

@@ -19,10 +19,10 @@ python crawler.py -lon <longitude> -lat <latitude>
 
 Example:
 ```
-# Stream the data from the earth's surface
+# Stream the data from the earth's surface and store them into the remote database
 python crawler.py
 
-# or from specific location
+# From specific location
 python crawler.py -lon -122.75 -lat 36.8
 ```
 
@@ -36,5 +36,17 @@ Example:
 ```
 python query.py -k "#NBA Duncan" -lon -122.75 -lat 36.8 -r 50
 ```
+
+
+Database management:
+```
+# Clear all tweets documents
+python3 remotedb.py clear
+
+
+# Create GEO2D index on collection tweets
+python3 remotedb.py index
+```
+
 
 
