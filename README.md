@@ -12,7 +12,7 @@ pip install -r requirements.txt
 
 ## Execution
 
-Create a continuous tweets consuming task:
+#### Create a continuous tweets consuming task:
 ```
 python crawler.py -lon <longitude> -lat <latitude>
 ```
@@ -25,9 +25,10 @@ python crawler.py
 # From specific location
 python crawler.py -lon -122.75 -lat 36.8
 ```
+You may see something like this:
+![Insertion](reference/1.insertion.jpg "Insertion")
 
-
-Query the tweets form remote database:
+#### Query the tweets form remote database:
 ```
 python query.py -k <keywords> -lon <longitude> -lat <latitude> -r <radius in miles>
 ```
@@ -38,7 +39,7 @@ python query.py -k "#NBA Duncan" -lon -122.75 -lat 36.8 -r 50
 ```
 
 
-Database management:
+#### Database management:
 ```
 # Clear all tweets documents
 python3 remotedb.py clear
