@@ -15,7 +15,7 @@ pip install -r requirements.txt
 
 #### Create a continuous tweets consuming task:
 ```
-python crawler.py -lon <longitude> -lat <latitude>
+python3 crawler.py -lon <longitude> -lat <latitude>
 ```
 
 Example:
@@ -37,6 +37,7 @@ python3 query.py -k <keywords> -lon <longitude> -lat <latitude> -r <radius>
 Example:
 ```
 python3 query.py -k 'NBA'
+python3 query.py -k 'NBA FIFA'
 python3 query.py -lon -122.75 -lat 36.8 -r 10
 python3 query.py -lon -122.75 -lat 36.8 -r 30
 python3 query.py -lon -122.75 -lat 36.8 -r 50 -k 'NBA'
