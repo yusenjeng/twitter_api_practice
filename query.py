@@ -6,7 +6,7 @@ from remotedb import RemoteDB
 remotedb = RemoteDB()
 remotedb.connect()
 
-
 if __name__ == '__main__':
     args = args_query(argv)
-    print(args)
+    remotedb.findTweets(args['keyword'], args['lon'], args['lat'],
+                        args['radius'])

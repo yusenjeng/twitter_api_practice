@@ -1,4 +1,5 @@
 # twitter_api_practice
+Need Python3 for this project.
 
 ## Installation
 From [PyPi](https://pypi.python.org/pypi/kubernetes/) directly:
@@ -20,24 +21,25 @@ python crawler.py -lon <longitude> -lat <latitude>
 Example:
 ```
 # Stream the data from the earth's surface and store them into the remote database
-python crawler.py
+python3 crawler.py
 
 # From specific location
-python crawler.py -lon -122.75 -lat 36.8
+python3 crawler.py -lon -122.75 -lat 36.8
 ```
 You may see something like this:
 ![Insertion](reference/1.insertion.jpg "Insertion")
 
 #### Query the tweets form remote database:
 ```
-python query.py -k <keywords> -lon <longitude> -lat <latitude> -r <radius>
+python3 query.py -k <keywords> -lon <longitude> -lat <latitude> -r <radius>
 ```
 
 Example:
 ```
-python query.py -k "NBA"
-python query.py -lon -122.75 -lat 36.8 -r 10
-python query.py -lon -122.75 -lat 36.8 -r 1
+python3 query.py -k 'NBA'
+python3 query.py -lon -122.75 -lat 36.8 -r 10
+python3 query.py -lon -122.75 -lat 36.8 -r 30
+python3 query.py -lon -122.75 -lat 36.8 -r 50 -k 'NBA'
 ```
 The program returns two query results in this case. It also measures the time spent on the query and shows the operators used this time.
 ![Query](reference/2.query.jpg "Query")

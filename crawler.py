@@ -1,11 +1,12 @@
+import config
+import tweepy
+import datetime
+
 from sys import argv, exit
 from args import args_crawler
 from pymongo.errors import WriteError
 from remotedb import RemoteDB
 
-import config
-import tweepy
-import datetime
 
 remotedb = RemoteDB()
 remotedb.connect()
