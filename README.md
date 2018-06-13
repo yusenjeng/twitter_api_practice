@@ -39,6 +39,8 @@ python query.py -k "NBA"
 python query.py -lon -122.75 -lat 36.8 -r 10
 python query.py -lon -122.75 -lat 36.8 -r 1
 ```
+The program returns two query results in this case. It also measures the time spent on the query and shows the operators used in the query.
+![Query](reference/2.query.jpg "Query")
 
 
 #### Database management:
@@ -47,7 +49,7 @@ python query.py -lon -122.75 -lat 36.8 -r 1
 python3 remotedb.py clear
 
 
-# Create GEO2D index on collection tweets
+# Create indices on collection tweets
 python3 remotedb.py index
 ```
 

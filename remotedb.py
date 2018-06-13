@@ -64,28 +64,9 @@ class RemoteDB(object):
             print('\t', doc['text'])
             inc += 1
 
-        print(opt)
+        print('Query operators:', opt)
 
         self.timeit_end()
-
-    def findTweetsNear(self, lon=-122.75, lat=36.8, radius=10):
-        radius = float(radius)
-        opt = {"coordinates": {"$within": {"$center": [[lon, lat], radius]}}}
-        results = self.tweets.find(opt).limit(100)
-
-        inc = 1
-        for doc in list(results):
-            print(inc, doc['_id'], doc['coordinates'], doc['text'])
-            inc += 1
-
-    def findTweetsContains(self, keyword='NBA'):
-        opt = {'$text': {'$search': keyword}}
-        results = self.tweets.find(opt).limit(100)
-
-        inc = 1
-        for doc in list(results):
-            print(inc, doc['_id'], doc['coordinates'], doc['text'])
-            inc += 1
 
     def deleteTweets(self):
         deleted_count = self.tweets.delete_many({}).deleted_count
@@ -100,11 +81,7 @@ if __name__ == '__main__':
         remotedb.deleteTweets()
     elif 'index' in argv:
         remotedb.createIndex(24)
-    elif 'keyword' in argv:
-        remotedb.findTweetsContains(argv[2])
-    elif 'geo' in argv:
-        remotedb.findTweetsNear(radius=argv[2])
-    else:
+    elif 'test' in argv:
         remotedb.findTweets('NBA')
         remotedb.findTweets(None, -122.75, 36.8, 10)
         remotedb.findTweets('MEDICAL', -122.75, 36.8, 10)
