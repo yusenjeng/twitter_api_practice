@@ -6,6 +6,8 @@ From [PyPi](https://pypi.python.org/pypi/kubernetes/) directly:
 pip install -r requirements.txt
 ```
 
+* A proper config.py file for accessing third party services is necessary
+
 ## Execution
 
 Create a continuous tweets consuming task:
