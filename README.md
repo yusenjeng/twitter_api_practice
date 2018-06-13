@@ -30,7 +30,7 @@ You may see something like this:
 
 #### Query the tweets form remote database:
 ```
-python query.py -k <keywords> -lon <longitude> -lat <latitude> -r <radius in miles>
+python query.py -k <keywords> -lon <longitude> -lat <latitude> -r <radius>
 ```
 
 Example:
